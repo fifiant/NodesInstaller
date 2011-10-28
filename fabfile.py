@@ -13,7 +13,7 @@ env.maven = "\'export PATH=${M2_HOME}/bin:${PATH}\'"
 env.mvn = '/usr/local/maven/bin/mvn'
 env.java ="\'export PATH=${JAVA_HOME}/bin:{$PATH}\'"
 env.frascati = "\'export PATH=${FRASCATI_HOME}/bin:${PATH}\'"
-#Credential
+# replace this Credential by your own.
 env.key_filename = '/home/fernand/.euca/adamcloudkey.priv'
 
 def updateSourceListe():

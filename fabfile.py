@@ -12,7 +12,7 @@ env.mavenHome = "\'export PATH=${M2_HOME}/bin:${PATH}\'"
 # Maven command
 env.mvn = '/usr/local/maven/bin/mvn'
 env.javaHome ="\'export PATH=${JAVA_HOME}/bin:{$PATH}\'"
-env.frascati = "\'export PATH=${FRASCATI_HOME}/bin:${PATH}\'"
+env.frascatiHome = "\'export PATH=${FRASCATI_HOME}/bin:${PATH}\'"
 # replace this Credential by your own.
 env.key_filename = '/home/fernand/.euca/adamcloudkey.priv'
 
@@ -54,7 +54,7 @@ def install_frascati():
     run('mv frascati-1.4-bin.zip ~/install;')
     run('cd ~/install && unzip frascati-1.4-bin.zip ;')
     sudo('echo "export FRASCATI_HOME=\'~/install/frascati-runtime-1.4\'" >> ~/.bashrc')
-    sudo('echo %(frascati)s >> ~/.bashrc' %env)
+    sudo('echo %(frascatiHome)s >> ~/.bashrc' %env)
     sudo('. .bashrc')
 
 def uptime():

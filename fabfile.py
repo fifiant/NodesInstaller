@@ -8,10 +8,10 @@ env.hosts = ['192.168.20.200']
 # Hosts Users
 env.user = 'ubuntu'
 #Maven settings
-env.maven = "\'export PATH=${M2_HOME}/bin:${PATH}\'"
+env.mavenHome = "\'export PATH=${M2_HOME}/bin:${PATH}\'"
 # Maven command
 env.mvn = '/usr/local/maven/bin/mvn'
-env.java ="\'export PATH=${JAVA_HOME}/bin:{$PATH}\'"
+env.javaHome ="\'export PATH=${JAVA_HOME}/bin:{$PATH}\'"
 env.frascati = "\'export PATH=${FRASCATI_HOME}/bin:${PATH}\'"
 # replace this Credential by your own.
 env.key_filename = '/home/fernand/.euca/adamcloudkey.priv'
@@ -23,13 +23,13 @@ def updateSourceListe():
 def install_java():
     sudo('apt-get update')
     sudo('apt-get install sun-java6-jre sun-java6-bin sun-java6-jdk sun-java6-plugin sun-java6-fonts')
-    sudo('echo "export JAVA_HOME=\'/usr/lib/jvm/java-6-sun-1.6.0.24/jre\'" >> ~/.bashrc')
-    sudo('echo %(java)s >> ~/.bashrc' %env)
+    sudo('echo "export JAVA_HOME=\'/usr/lib/jvm/java-6-sun-1.6.0.26/jre\'" >> ~/.bashrc')
+    sudo('echo %(javaHome)s >> ~/.bashrc' %env)
     run('echo "Java Installation finished successfully............"')
 
 def install():
     updateSourceListe()
-    #install_java()
+    install_java()
     install_maven()
     install_frascati()
 
@@ -41,7 +41,7 @@ def install_maven():
     run('cd ~/install && tar -xzvf apache-maven-2.2.1-bin.tar.gz;')
     sudo(' cd ~/install && mv apache-maven-2.2.1 /usr/local/maven')
     sudo('echo "export M2_HOME=\'/usr/local/maven/\'" >> ~/.bashrc')
-    sudo('echo %(maven)s >> ~/.bashrc' %env)
+    sudo('echo %(mavenHome)s >> ~/.bashrc' %env)
     sudo('. .bashrc')
     run('%(mvn)s -v'%env)
 

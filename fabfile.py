@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
 from fabric.api import run, env, local, sudo
 """
 @Author : Fawaz F. PARAISO
